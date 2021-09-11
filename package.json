@@ -1,0 +1,36 @@
+{
+  "name": "@sounter/facebook-automation",
+  "version": "1.5.0",
+  "description": "Post on facebook",
+  "author": "David Galarza <david@sounter.com>",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "lodash": "4.17.21",
+    "playwright": "1.11.0"
+  },
+  "devDependencies": {
+    "@types/lodash": "4.14.169",
+    "@typescript-eslint/eslint-plugin": "4.23.0",
+    "@typescript-eslint/parser": "4.23.0",
+    "eslint": "7.26.0",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-prettier": "3.4.0",
+    "prettier": "2.3.0",
+    "typescript": "4.2.4"
+  },
+  "scripts": {
+    "clean": "ls",
+    "build:clean": "yarn clean && yarn build",
+    "build": "ls",
+    "build:watch": "tsc -w",
+    "lint": "yarn prettier && yarn eslint",
+    "lint:fix": "yarn prettier:fix && yarn eslint:fix",
+    "prettier": "prettier --check 'src/**/*.ts'",
+    "prettier:fix": "prettier --write 'src/**/*.ts'",
+    "eslint": "eslint src/**/*.ts",
+    "eslint:fix": "eslint --fix src/**/*.ts",
+    "prepublishOnly": "yarn clean && yarn build"
+  }
+}
