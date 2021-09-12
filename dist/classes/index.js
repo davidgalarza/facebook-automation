@@ -41,6 +41,7 @@ class FacebookAutomation {
         await page.click('[aria-label="Post"]');
         await page.waitForTimeout(10000);
         await page.click('[aria-label="Post"]');
+        await page.waitForTimeout(5000);
         await this.close(browser);
     }
     /**
