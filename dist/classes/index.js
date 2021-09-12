@@ -35,11 +35,12 @@ class FacebookAutomation {
             // Select an input file
             const input = await photo.$('input[type=file]');
             await input.setInputFiles(data.imagePath);
-            await page.waitForTimeout(FacebookAutomation.WAIT_IN_MS);
+            await page.waitForTimeout(30000);
         }
         // Submit the post
         await page.click('[aria-label="Post"]');
-        await page.waitForTimeout(FacebookAutomation.WAIT_IN_MS);
+        await page.waitForTimeout(10000);
+        await page.click('[aria-label="Post"]');
         await this.close(browser);
     }
     /**
