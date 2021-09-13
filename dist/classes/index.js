@@ -18,7 +18,7 @@ class FacebookAutomation {
     /**
      * @description Post on the Facebook page.
      * @param {IPost} data
-     * @returns {Promise<void>}
+     * @returns {Promise<string>}
      */
     async post(data) {
         const { page, browser } = await this.authenticate();
@@ -35,14 +35,21 @@ class FacebookAutomation {
             // Select an input file
             const input = await photo.$('input[type=file]');
             await input.setInputFiles(data.imagePath);
-            await page.waitForTimeout(30000);
+            await page.waitForTimeout(40000);
         }
         // Submit the post
         await page.click('[aria-label="Post"]');
-        await page.waitForTimeout(10000);
+
+        await page.waitForResponse('https://www.facebook.com/api/graphql/');
+        const secondResponse = await page.waitForResponse('https://www.facebook.com/api/graphql/');
+        const postRes = await secondResponse.json();
+
+        const id = postRes.data.story_create.post_id;
+        await page.waitForTimeout(5000);
         await page.click('[aria-label="Post"]');
         await page.waitForTimeout(5000);
         await this.close(browser);
+        return id;
     }
     /**
      * @description Creates a browser and a page instance.
