@@ -35,7 +35,8 @@ class FacebookAutomation {
             // Select an input file
             const input = await photo.$('input[type=file]');
             await input.setInputFiles(data.imagePath);
-            await page.waitForTimeout(40000);
+            await page.waitForTimeout(5000);
+            await page.waitForSelector('[aria-label="Post"]:not([aria-disabled="true"])', {timeout:60000*3});
         }
         // Submit the post
         await page.click('[aria-label="Post"]');
