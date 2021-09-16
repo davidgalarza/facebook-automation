@@ -47,7 +47,9 @@ class FacebookAutomation {
 
         const id = postRes.data.story_create.post_id;
         await page.waitForTimeout(5000);
-        await page.click('[aria-label="Post"]');
+        try{
+            page.click('[aria-label="Post"]');
+        } catch(e) { }
         await page.waitForTimeout(5000);
         await this.close(browser);
         return id;
