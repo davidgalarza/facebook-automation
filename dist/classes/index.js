@@ -32,6 +32,7 @@ class FacebookAutomation {
         await page.keyboard.insertText(data.text);
         if (data.imagePath) {
             const photo = await page.$('div[role="dialog"] form[method="POST"]');
+            await photo.waitForSelector('input[type=file]');
             // Select an input file
             const input = await photo.$('input[type=file]');
             await input.setInputFiles(data.imagePath);
