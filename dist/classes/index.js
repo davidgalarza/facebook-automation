@@ -32,9 +32,13 @@ class FacebookAutomation {
         // Insert directly the text because the focus is already on the input text
         await page.keyboard.insertText(data.text);
         if (data.imagePath) {
-            const photo = await page.$('div[role="dialog"] form[method="POST"]');
+            let modal = await page.$('div[role="dialog"] form[method="POST"]');
+            const addMediaButton = await modal.$('div[aria-label="Photo/Video"]');
+            await addMediaButton.click();
+
+            await modal.waitForSelector('input[type="file"]');
             // Select an input file
-            const input = await photo.$('input[type=file]');
+            const input = await modal.$('input[type="file"]');
             await input.setInputFiles(data.imagePath);
             await page.waitForTimeout(5000);
             await page.waitForSelector('[aria-label="Post"]:not([aria-disabled="true"])', {timeout:60000*3});
