@@ -24,7 +24,7 @@ class FacebookAutomation {
         const { page, browser } = await this.authenticate();
         await page.goto(this.config.pageUrl);
         await page.addStyleTag({content: '.mkhogb32 {display: block !important;}'})
-        const createPostSelector = '[aria-label="Create Post"]';
+        const createPostSelector = '[aria-label="Create post"]';
         await page.waitForSelector(createPostSelector);
         await page.click(createPostSelector);
         // Wait on the create post modal"
@@ -33,8 +33,7 @@ class FacebookAutomation {
         await page.keyboard.insertText(data.text);
         if (data.imagePath) {
             let modal = await page.$('div[role="dialog"] form[method="POST"]');
-            const addMediaButton = await modal.$('div[aria-label="Photo/Video"]');
-            await addMediaButton.click();
+            
 
             await modal.waitForSelector('input[type="file"]');
             // Select an input file
