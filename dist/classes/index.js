@@ -27,7 +27,7 @@ class FacebookAutomation {
         const createPostSelector = '[aria-label="Create post"]';
         await page.waitForSelector(createPostSelector);
         await page.click(createPostSelector);
-        // Wait on the create post modal"
+        // Wait on the create post modal
         await page.waitForSelector('[aria-label="Post"]');
         // Insert directly the text because the focus is already on the input text
         await page.keyboard.insertText(data.text);
