@@ -34,7 +34,9 @@ class FacebookAutomation {
         if (data.imagePath) {
             let modal = await page.$('div[role="dialog"] form[method="POST"]');
             
-            await modal.click('div[aria-label="Photo/Video"]');
+            const addMediaButton = await modal.$('div[aria-label="Photo/Video"]');
+            await addMediaButton.click();
+            
             await modal.waitForSelector('input[type="file"]');
             // Select an input file
             const input = await modal.$('input[type="file"]');
