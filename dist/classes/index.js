@@ -23,7 +23,7 @@ class FacebookAutomation {
     async post(data) {
         const { page, browser } = await this.authenticate();
         await page.goto(this.config.pageUrl);
-        await page.addStyleTag({content: 'input[type="file"] {display: block !important;}'})
+        await page.addStyleTag({content: '.mkhogb32 {display: block !important;}'})
         const createPostSelector = '[aria-label="Create post"]';
         await page.waitForSelector(createPostSelector);
         await page.click(createPostSelector);
@@ -34,7 +34,7 @@ class FacebookAutomation {
         if (data.imagePath) {
             let modal = await page.$('div[role="dialog"] form[method="POST"]');
             
-
+            await modal.click('input[aria-label="Photo/Video"]');
             await modal.waitForSelector('input[type="file"]');
             // Select an input file
             const input = await modal.$('input[type="file"]');
