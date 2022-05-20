@@ -8,7 +8,7 @@
   "license": "GPL-3.0",
   "dependencies": {
     "lodash": "4.17.21",
-    "playwright": "1.11.0"
+    "playwright": "1.22.1"
   },
   "devDependencies": {
     "@types/lodash": "4.14.169",
