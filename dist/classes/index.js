@@ -23,7 +23,7 @@ class FacebookAutomation {
     async post(data) {
         const { page, browser } = await this.authenticate();
         await page.goto(this.config.pageUrl);
-        await page.addStyleTag({content: '.mkhogb32 {display: block !important;}'})
+        await page.addStyleTag({content: 'input[type="file"] {display: block !important;}'})
         const createPostSelector = '[aria-label="Create post"]';
         await page.waitForSelector(createPostSelector);
         await page.click(createPostSelector);
