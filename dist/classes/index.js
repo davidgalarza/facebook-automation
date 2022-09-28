@@ -28,9 +28,10 @@ class FacebookAutomation {
         await page.click('[aria-label="Your profile"]');
         await page.click('[aria-label="Review Now"]');
 
-        const createPostSelector = '[aria-label="Create post"]';
-        await page.waitForSelector(createPostSelector);
-        await page.click(createPostSelector);
+        // What's on your mind?
+
+        await page.locator('text="What\'s on your mind?"').click();
+
         // Wait on the create post modal
         await page.waitForSelector('[aria-label="Post"]');
         // Insert directly the text because the focus is already on the input text
