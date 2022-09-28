@@ -81,7 +81,7 @@ class FacebookAutomation {
     async authenticate() {
         const { page, browser } = await this.createBrowserAndPage();
         await page.goto(config_1.defaultConfig.urls.authentication);
-        await page.setViewportSize();
+        // await page.setViewportSize();
         // const cookieBanner = '[data-cookiebanner="accept_button"]';
         // await page.waitForSelector(cookieBanner);
         // await page.click(cookieBanner, { delay: 4000 });
