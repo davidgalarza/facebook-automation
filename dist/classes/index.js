@@ -24,6 +24,10 @@ class FacebookAutomation {
         const { page, browser } = await this.authenticate();
         await page.goto(this.config.pageUrl);
         await page.addStyleTag({content: 'input[type="file"] {display: block !important;}'})
+
+        await page.click('[aria-label="Your profile"]');
+        await page.click('[aria-label="Review Now"]');
+
         const createPostSelector = '[aria-label="Create post"]';
         await page.waitForSelector(createPostSelector);
         await page.click(createPostSelector);
