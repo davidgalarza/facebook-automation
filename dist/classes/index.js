@@ -23,7 +23,7 @@ class FacebookAutomation {
     async post(data) {
         const { page, browser } = await this.authenticate();
         await page.goto(this.config.pageUrl);
-        await page.addStyleTag({content: 'input[type="file"] {display: block !important;}'})
+        
 
         await page.click('[aria-label="Your profile"]');
         await page.click('[aria-label="Review Now"]');
@@ -31,6 +31,8 @@ class FacebookAutomation {
         // What's on your mind?
 
         await page.locator('text="What\'s on your mind?"').click();
+
+        await page.addStyleTag({content: 'input[type="file"] {display: block !important;}'})
 
         // Wait on the create post modal
         await page.waitForSelector('[aria-label="Post"]');
