@@ -81,7 +81,7 @@ class FacebookAutomation {
     async authenticate() {
         const { page, browser } = await this.createBrowserAndPage();
         await page.goto(config_1.defaultConfig.urls.authentication);
-        await page.setViewportSize({ width: 2389, height: 880 });
+        await page.setViewportSize();
         // const cookieBanner = '[data-cookiebanner="accept_button"]';
         // await page.waitForSelector(cookieBanner);
         // await page.click(cookieBanner, { delay: 4000 });
@@ -89,6 +89,9 @@ class FacebookAutomation {
         await page.fill('#email', this.config.credentials.login);
         await page.fill('#pass', this.config.credentials.password);
         await page.keyboard.press('Enter', { delay: 1000 });
+        console.log('ESPERANDO NAVIFACION');
+        await page.waitForNavigation();
+        console.log('NAVEGO');
         await page.waitForTimeout(FacebookAutomation.WAIT_IN_MS);
         return { page, browser };
     }
