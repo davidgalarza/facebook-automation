@@ -26,7 +26,7 @@ class FacebookAutomation {
         
 
         await page.click('[aria-label="Your profile"]');
-        await page.click('[aria-label="Review Now"]');
+        await page.click('[aria-label="Get started"]');
 
         // What's on your mind?
 
